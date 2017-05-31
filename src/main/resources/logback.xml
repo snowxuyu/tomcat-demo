@@ -146,8 +146,8 @@
     <logger name="org.quartz" level="WARN" />
     <logger name="com.meidusa" level="WARN" />
     <logger name="org.apache.commons" level="WARN" />
-    <logger name="org.springframework" level="ERROR"></logger>
-    <logger name="c.m.f.spring.aspect" level="ERROR"></logger>
+    <logger name="org.springframework" level="DEBUG"></logger>
+    <logger name="c.m.f.spring.aspect" level="DEBUG"></logger>
 
     <!-- 生产环境，将此级别配置为适合的级别，以名日志文件太多或影响程序性能 -->
     <root level="DEBUG">

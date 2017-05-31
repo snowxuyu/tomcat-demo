@@ -23,7 +23,7 @@
           <property name="ignoreUnresolvablePlaceholders" value="true" />
           <property name="locations">
                  <list>
-                      <value>classpath:mobanker.properties</value>
+                      <value>classpath:configs/jdbc.properties</value>
                  </list>
           </property>
     </bean>
