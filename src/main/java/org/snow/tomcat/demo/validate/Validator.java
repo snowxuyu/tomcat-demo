@@ -17,8 +17,8 @@ public class Validator {
     private static Logger logger = LoggerFactory.getLogger(Validator.class);
 
     public static void checkValidate(BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            ObjectError error = bindingResult.getAllErrors().get(0);
+        if ( bindingResult.hasErrors() ) {
+            ObjectError error = bindingResult.getAllErrors().get(bindingResult.getAllErrors().size() - 1);
             logger.error("validate error :{}", error);
             throw new BaseException(error.getDefaultMessage());
         }
