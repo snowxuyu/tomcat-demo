@@ -9,10 +9,7 @@ import org.snow.tomcat.demo.entity.User;
 import org.snow.tomcat.demo.service.UserService;
 import org.snow.tomcat.demo.validate.Validator;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -35,8 +32,8 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/test")
-    public ResponseEntity test() {
+    @RequestMapping(value = "/getAll")
+    public ResponseEntity getAll() {
         List<User> userList = userService.getAll();
         return BaseResponse.buildSuccess(userList, "查询成功");
     }
@@ -44,10 +41,29 @@ public class UserController {
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity addUser(@RequestBody @Valid User user, BindingResult bindingResult) {
-        Validator.checkValidate(bindingResult); //校验参数
+        Validator.checkValidate(bindingResult);
         logger.debug("into addUser params:{}", JSONObject.toJSON(user));
 
         userService.insert(user);
         return BaseResponse.buildSuccess("添加用户成功");
+    }
+
+    @PostMapping(value = "/updateUser", consumes = "application/json")
+    public ResponseEntity updateUser(@RequestBody @Valid User user, BindingResult bindingResult) {
+        Validator.checkValidate(bindingResult);
+        logger.debug("update user info:{}", JSONObject.toJSON(user));
+        User entity = userService.getById(user.getId());
+        entity.setUserName(user.getUserName());
+        entity.setPassWord(user.getPassWord());
+        entity.setAddress(user.getAddress());
+        entity.setPhone(user.getPhone());
+        userService.update(entity);
+        return BaseResponse.buildSuccess("用户修改成功");
+    }
+
+    @PostMapping(value = "/delete/{id}", consumes = "application/json")
+    public ResponseEntity updateUser(@PathVariable("id") String id) {
+        userService.deleteById(id);
+        return BaseResponse.buildSuccess("用户删除成功");
     }
 }

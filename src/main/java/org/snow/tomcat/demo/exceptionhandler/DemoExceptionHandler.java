@@ -22,12 +22,12 @@ public class DemoExceptionHandler {
     @ExceptionHandler({BaseException.class})
     public ResponseEntity excetionHandler(BaseException e) {
         logger.error("Controller BaseException:{}", e);
-        return BaseResponse.buildError(e.getMessage(), "54000001");
+        return BaseResponse.buildError("54000001", e.getMessage());
     }
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity exceptionHandler(Exception e) {
         logger.error("Controller Exception:{}", e);
-        return BaseResponse.buildError("系统异常", "54000000");
+        return BaseResponse.buildError("54000000", "系统异常");
     }
 }

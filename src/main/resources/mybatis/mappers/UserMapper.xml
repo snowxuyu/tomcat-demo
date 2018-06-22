@@ -6,14 +6,12 @@
     </resultMap>
 
     <select id="queryById" parameterType="string" resultMap="getMap">
-
         select * from t_user where id = #{id}
     </select>
 
 
     <select id="queryBitById" parameterType="string" resultType="User">
         select user_name userName, pass_word passWord from t_user where id = #{id}
-
     </select>
 
     <select id="selectAll" resultMap="getMap">
