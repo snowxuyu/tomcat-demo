@@ -66,4 +66,21 @@ public class UserController {
         userService.deleteById(id);
         return BaseResponse.buildSuccess("用户删除成功");
     }
+
+    @GetMapping(value = "/getByObj")
+    public ResponseEntity getByObj() {
+        User user = new User();
+        user.setPhone("18621982087");
+        List<User> userList = userService.getByObj(user);
+        return BaseResponse.buildSuccess(userList, "查询成功");
+    }
+
+    @GetMapping(value = "/getOne")
+    public ResponseEntity getOne() {
+        User user = new User();
+        user.setPhone("18621982087");
+        User one = userService.getOneByObj(user);
+        return BaseResponse.buildSuccess(one, "查询成功");
+    }
+
 }
