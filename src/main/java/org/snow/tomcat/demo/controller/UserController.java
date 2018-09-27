@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +32,12 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    @RequestMapping("/testObj")
+    public ResponseEntity testObj() {
+        List list = new ArrayList();
+        return BaseResponse.buildSuccess(list, "查询");
+    }
 
     @RequestMapping(value = "/getAll")
     public ResponseEntity getAll() {

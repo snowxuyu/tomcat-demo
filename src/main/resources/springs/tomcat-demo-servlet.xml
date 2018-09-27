@@ -26,7 +26,10 @@
             <!--string消息转换utf-8-->
             <ref bean="stringHttpMessageConverter" />
             <!--使用fastJson返回json格式数据 -->
-            <ref bean="fastJsonHttpMessageConverter"/>
+            <!--<ref bean="fastJsonHttpMessageConverter"/>-->
+
+            <!--使用jackson返回json格式数据 -->
+            <ref bean="jackson2HttpMessageConverter"/>
         </mvc:message-converters>
     </mvc:annotation-driven>
 
@@ -40,15 +43,37 @@
         </property>
     </bean>
 
+    <!--配置Jackson支持-->
+    <bean id="jackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <!--格式化输出-->
+        <property name="prettyPrint" value="true"/>
+
+        <property name="objectMapper">
+            <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                <property name="dateFormat">
+                    <bean class="java.text.SimpleDateFormat">
+                        <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html; charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
     <!-- 配置Fastjson支持 -->
-    <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+<!--    <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
                 <value>text/html;charset=UTF-8</value>
                 <value>application/json</value>
             </list>
         </property>
-        <!-- 定义一个时间属性 WriteDateUseDateFormat是FastJsonHttpMessageConverter 类自带的属性features中的枚举值 -->
         <property name="features">
             <list>
                 <value>WriteMapNullValue</value>
@@ -58,7 +83,7 @@
                 <value>PrettyFormat</value>
             </list>
         </property>
-    </bean>
+    </bean>-->
 
     <!--string消息转换utf-8-->
     <bean id="stringHttpMessageConverter"  class="org.springframework.http.converter.StringHttpMessageConverter">
