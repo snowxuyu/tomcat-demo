@@ -86,22 +86,22 @@ public class PdfServiceImpl implements PdfService {
         addTableCell(baseInfoTable, "人民币元", font);
 
         addTableHeaderCell(baseInfoTable, "企业名称", font);
-        addTableCell(baseInfoTable, "上海前隆信息科技有限公司", font);
+        addTableCell(baseInfoTable, "上海大闸蟹信息科技有限公司", font);
 
         addTableHeaderCell(baseInfoTable, "原注册号", font);
         addTableCell(baseInfoTable, "-", font);
 
         addTableHeaderCell(baseInfoTable, "企业英文名称", font);
-        addTableCell(baseInfoTable, "上海前隆信息科技有限公司", font);
+        addTableCell(baseInfoTable, "上海大闸蟹信息科技有限公司", font);
 
         addTableHeaderCell(baseInfoTable, "企业英文名称", font);
-        addTableCell(baseInfoTable, "上海前隆信息科技有限公司", font);
+        addTableCell(baseInfoTable, "上海大闸蟹信息科技有限公司", font);
 
         addTableHeaderCell(baseInfoTable, "注册号", font);
         addTableCell(baseInfoTable, "310109000645413", font);
 
         addTableHeaderCell(baseInfoTable, "曾用名", font);
-        addTableCell(baseInfoTable, "上海前隆金融信息服务有限公司", font);
+        addTableCell(baseInfoTable, "上海大闸蟹金融信息服务有限公司", font);
 
         addTableHeaderCell(baseInfoTable, "登记机关", font);
         addTableCell(baseInfoTable, "虹口区市场监管局", font);
