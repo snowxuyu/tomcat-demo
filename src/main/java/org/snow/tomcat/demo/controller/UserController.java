@@ -69,7 +69,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/delete/{id}", consumes = "application/json")
-    public ResponseEntity updateUser(@PathVariable("id") String id) {
+    public ResponseEntity updateUser(@PathVariable("id") Long id) {
         userService.deleteById(id);
         return BaseResponse.buildSuccess("用户删除成功");
     }
